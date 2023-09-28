@@ -1,0 +1,45 @@
+The idea is to create a mod that enables mobs to form up in formations, and then attack the player using those formations.
+
+For example, a group of skeletons and zombies would form a staggered line. When the player approaches, the skeletons would use the zombies as a shield while they reload.
+
+(top down view)
+XSXSX
+
+When the skeletons are reloading, the zombies fill in the gaps.
+.S.S.
+.XXX.
+
+where
+X = Zombie
+S = Skeleton
+. = nothing
+
+In addition, skeletons should mass up and start firing in vertical arcs toward the player's position. This will enable them to fire over walls and guarantee themselves hits.
+
+
+(side view)
+P......
+OO.....
+OO..SSS
+
+(top down view)
+SSS
+SSS
+SSS
+...
+...
+OOO
+OPO
+
+
+
+
+If there is time for it, I would also like to incorporate basic machine learning capabilities,
+the input would be a 48x96x48 tensor, including blocks, mobs, and the player's position.
+
+Blocks would need to be converted to one of four, Air, Solid, Hazardous, and Impassible.
+
+Air is literally just any block with no collisions, like air.
+Solid is the vast majority of blocks, like stone or grass or dirt.
+Hazardous is reserved for water and fire blocks. Water slows down units, while fire does actual damage. So long as there isn't too much of either in the way, it's doable to traverse.
+Impassible is used only for lava. There is no point in trying to traverse lava with units, since they'll just die.
